@@ -5,9 +5,26 @@ import {
   runNxCommandAsync,
   runPackageManagerInstall,
   uniq,
+  updateFile,
 } from '@nrwl/nx-plugin/testing';
 
 describe('pnpm-install e2e', () => {
+  beforeAll(() => {
+    const workspaceJson = readJson('workspace.json');
+    const workspaceJsonUsingYarn = {
+      ...workspaceJson,
+      cli: {
+        ...workspaceJson.cli,
+        packageManager: 'yarn',
+      },
+    };
+
+    updateFile(
+      'workspace.json',
+      JSON.stringify(workspaceJsonUsingYarn, null, 2)
+    );
+  });
+
   it('can run pnpm install', (done) => {
     let pnpmInstallOutput = '';
 
