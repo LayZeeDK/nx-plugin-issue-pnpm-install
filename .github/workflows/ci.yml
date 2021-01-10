@@ -22,5 +22,6 @@ jobs:
 
       - run: npm install --global pnpm
       - run: pnpm install --reporter silent --frozen-lockfile false --verify-store-integrity false
+      - run: pnpx nx report
 
       - run: pnpm e2e
