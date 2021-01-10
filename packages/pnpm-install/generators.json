@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "pnpm-install",
+  "version": "0.0.1",
+  "generators": {
+    "pnpm-install": {
+      "factory": "./src/generators/pnpm-install/generator",
+      "schema": "./src/generators/pnpm-install/schema.json",
+      "description": "pnpm-install generator"
+    }
+  }
+}

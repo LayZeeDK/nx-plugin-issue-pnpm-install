@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "projects": {
+    "pnpm-install": {
+      "root": "packages/pnpm-install",
+      "sourceRoot": "packages/pnpm-install/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/pnpm-install/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/pnpm-install"
+          ],
+          "options": {
+            "jestConfig": "packages/pnpm-install/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/packages/pnpm-install",
+            "tsConfig": "packages/pnpm-install/tsconfig.lib.json",
+            "packageJson": "packages/pnpm-install/package.json",
+            "main": "packages/pnpm-install/src/index.ts",
+            "assets": [
+              "packages/pnpm-install/*.md",
+              {
+                "input": "./packages/pnpm-install/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/pnpm-install",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/pnpm-install",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "pnpm-install-e2e": {
+      "projectType": "application",
+      "root": "e2e\\pnpm-install-e2e",
+      "sourceRoot": "e2e\\pnpm-install-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "pnpm-install:build",
+            "npmPackageName": "@nx-plugin/pnpm-install",
+            "pluginOutputPath": "dist/packages/pnpm-install",
+            "jestConfig": "e2e/pnpm-install-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}
