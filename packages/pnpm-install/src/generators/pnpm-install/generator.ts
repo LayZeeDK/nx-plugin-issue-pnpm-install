@@ -8,6 +8,8 @@ import {
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
+
+import { addDependency } from './add-dependency';
 import { PnpmInstallGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends PnpmInstallGeneratorSchema {
@@ -72,5 +74,11 @@ export default async function (
     tags: normalizedOptions.parsedTags,
   });
   addFiles(host, normalizedOptions);
+  const installPackages = addDependency(host, 'luxon', '^1.25.0');
+
   await formatFiles(host);
+
+  return () => {
+    installPackages();
+  };
 }
