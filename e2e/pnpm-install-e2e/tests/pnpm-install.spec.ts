@@ -10,7 +10,8 @@ import {
 
 describe('pnpm-install e2e', () => {
   it('can run yarn install', (done) => {
-    updateFile('/workspace.json', (raw) => {
+    ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
+    updateFile('workspace.json', (raw) => {
       const workspaceJson = JSON.parse(raw);
       const workspaceJsonUsingYarn = {
         ...workspaceJson,
