@@ -14,6 +14,7 @@ devDependencies:
   eslint: 7.10.0
   eslint-config-prettier: 6.0.0_eslint@7.10.0
   jest: 26.2.2_ts-node@9.1.1
+  pnpm: 5.15.0
   prettier: 2.1.2
   ts-jest: 26.4.0_jest@26.2.2+typescript@4.0.5
   ts-node: 9.1.1_typescript@4.0.5
@@ -6155,6 +6156,13 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
+  /pnpm/5.15.0:
+    dev: true
+    engines:
+      node: '>=10.16'
+    hasBin: true
+    resolution:
+      integrity: sha512-c9erF7MX4ZQFfoqG6V5zHY6B49har85JJ8xH1DtA0dXQvWzRzZbk+GvRrw88lL+QGy/rDYoIpuOGTqmTdirsWA==
   /portfinder/1.0.28:
     dependencies:
       async: 2.6.3
@@ -6499,7 +6507,7 @@ packages:
       request-promise-core: 1.1.4_request@2.88.2
       stealthy-require: 1.1.1
       tough-cookie: 2.5.0
-    deprecated: 'request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142'
+    deprecated: request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142
     dev: true
     engines:
       node: '>=0.12.0'
@@ -6529,7 +6537,7 @@ packages:
       tough-cookie: 2.5.0
       tunnel-agent: 0.6.0
       uuid: 3.4.0
-    deprecated: 'request has been deprecated, see https://github.com/request/request/issues/3142'
+    deprecated: request has been deprecated, see https://github.com/request/request/issues/3142
     dev: true
     engines:
       node: '>= 6'
@@ -6590,7 +6598,7 @@ packages:
     resolution:
       integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==
   /resolve-url/0.2.1:
-    deprecated: 'https://github.com/lydell/resolve-url#deprecated'
+    deprecated: https://github.com/lydell/resolve-url#deprecated
     dev: true
     resolution:
       integrity: sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
@@ -7684,7 +7692,7 @@ packages:
       tslib: 1.14.1
       tsutils: 2.29.0_typescript@4.0.5
       typescript: 4.0.5
-    deprecated: 'TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information.'
+    deprecated: TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information.
     dev: true
     engines:
       node: '>=4.8.0'
@@ -7850,7 +7858,7 @@ packages:
     resolution:
       integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   /urix/0.1.0:
-    deprecated: 'Please see https://github.com/lydell/urix#deprecated'
+    deprecated: Please see https://github.com/lydell/urix#deprecated
     dev: true
     resolution:
       integrity: sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
@@ -8387,6 +8395,7 @@ specifiers:
   eslint: 7.10.0
   eslint-config-prettier: 6.0.0
   jest: 26.2.2
+  pnpm: ^5.15.0
   prettier: 2.1.2
   ts-jest: 26.4.0
   ts-node: ~9.1.1
