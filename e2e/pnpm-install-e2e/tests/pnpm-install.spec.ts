@@ -30,8 +30,14 @@ describe('pnpm-install e2e', () => {
       `generate @nx-plugin/pnpm-install:pnpm-install ${plugin}`
     );
 
-    const result = await runNxCommandAsync(`build ${plugin}`);
-    expect(result.stdout).toContain('Executor ran');
+    try {
+      const result = await runNxCommandAsync(`build ${plugin}`);
+      expect(result.stdout).toContain('Executor ran');
+    } catch (error) {
+      console.error(error);
+
+      throw error;
+    }
 
     done();
   });
