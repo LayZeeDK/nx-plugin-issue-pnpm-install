@@ -69,6 +69,6 @@
   },
   "cli": {
     "defaultCollection": "@nrwl/nx-plugin",
-    "packageManager": "pnpm"
+    "packageManager": "yarn"
   }
 }
