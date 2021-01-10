@@ -9,8 +9,8 @@ import {
 } from '@nrwl/nx-plugin/testing';
 
 describe('pnpm-install e2e', () => {
-  beforeAll(() => {
-    updateFile('workspace.json', (raw) => {
+  it('can run yarn install', (done) => {
+    updateFile('/workspace.json', (raw) => {
       const workspaceJson = JSON.parse(raw);
       const workspaceJsonUsingYarn = {
         ...workspaceJson,
@@ -22,20 +22,18 @@ describe('pnpm-install e2e', () => {
 
       return JSON.stringify(workspaceJsonUsingYarn, null, 2);
     });
-  });
 
-  it('can run pnpm install', (done) => {
-    let pnpmInstallOutput = '';
+    let yarnInstallOutput = '';
 
     try {
-      pnpmInstallOutput = runPackageManagerInstall();
+      yarnInstallOutput = runPackageManagerInstall();
     } catch (error) {
       console.error(error);
 
       throw error;
     }
 
-    expect(pnpmInstallOutput).toBe('');
+    expect(yarnInstallOutput).toBe('');
     done();
   });
 
