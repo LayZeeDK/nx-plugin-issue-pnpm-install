@@ -10,19 +10,18 @@ import {
 
 describe('pnpm-install e2e', () => {
   beforeAll(() => {
-    const workspaceJson = readJson('workspace.json');
-    const workspaceJsonUsingYarn = {
-      ...workspaceJson,
-      cli: {
-        ...workspaceJson.cli,
-        packageManager: 'yarn',
-      },
-    };
+    updateFile('workspace.json', (raw) => {
+      const workspaceJson = JSON.parse(raw);
+      const workspaceJsonUsingYarn = {
+        ...workspaceJson,
+        cli: {
+          ...workspaceJson.cli,
+          packageManager: 'yarn',
+        },
+      };
 
-    updateFile(
-      'workspace.json',
-      JSON.stringify(workspaceJsonUsingYarn, null, 2)
-    );
+      return JSON.stringify(workspaceJsonUsingYarn, null, 2);
+    });
   });
 
   it('can run pnpm install', (done) => {
