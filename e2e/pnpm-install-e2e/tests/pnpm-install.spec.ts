@@ -5,9 +5,26 @@ import {
   runNxCommandAsync,
   runPackageManagerInstall,
   uniq,
+  updateFile,
 } from '@nrwl/nx-plugin/testing';
 
 describe('pnpm-install e2e', () => {
+  beforeEach(() => {
+    ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
+    updateFile('workspace.json', (raw) => {
+      const workspaceJson = JSON.parse(raw);
+      const workspaceJsonUsingPnpm = {
+        ...workspaceJson,
+        cli: {
+          ...workspaceJson.cli,
+          packageManager: 'pnpm',
+        },
+      };
+
+      return JSON.stringify(workspaceJsonUsingPnpm, null, 2);
+    });
+  });
+
   it('can run pnpm install', (done) => {
     let pnpmInstallOutput = '';
 
@@ -25,7 +42,6 @@ describe('pnpm-install e2e', () => {
 
   it('should create pnpm-install', async (done) => {
     const plugin = uniq('pnpm-install');
-    ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
     await runNxCommandAsync(
       `generate @nx-plugin/pnpm-install:pnpm-install ${plugin}`
     );
@@ -45,7 +61,6 @@ describe('pnpm-install e2e', () => {
   describe('--directory', () => {
     it('should create src in the specified directory', async (done) => {
       const plugin = uniq('pnpm-install');
-      ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
       await runNxCommandAsync(
         `generate @nx-plugin/pnpm-install:pnpm-install ${plugin} --directory subdir`
       );
@@ -59,7 +74,6 @@ describe('pnpm-install e2e', () => {
   describe('--tags', () => {
     it('should add tags to nx.json', async (done) => {
       const plugin = uniq('pnpm-install');
-      ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
       await runNxCommandAsync(
         `generate @nx-plugin/pnpm-install:pnpm-install ${plugin} --tags e2etag,e2ePackage`
       );
