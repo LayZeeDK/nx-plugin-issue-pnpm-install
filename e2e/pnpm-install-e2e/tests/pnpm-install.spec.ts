@@ -9,7 +9,15 @@ import {
 
 describe('pnpm-install e2e', () => {
   it('can run pnpm install', (done) => {
-    const pnpmInstallOutput = runPackageManagerInstall();
+    let pnpmInstallOutput = '';
+
+    try {
+      pnpmInstallOutput = runPackageManagerInstall();
+    } catch (error) {
+      console.error(error);
+
+      throw error;
+    }
 
     expect(pnpmInstallOutput).toBe('');
     done();
