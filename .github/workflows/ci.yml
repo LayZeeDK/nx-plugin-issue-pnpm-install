@@ -1,0 +1,26 @@
+name: 'nx-plugin-issue CI pipeline'
+
+env:
+  NODE_OPTIONS: --max_old_space_size=4096
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+
+      - run: npm install --global pnpm
+      - run: pnpm install --reporter silent --frozen-lockfile false --verify-store-integrity false
+
+      - run: pnpm e2e
