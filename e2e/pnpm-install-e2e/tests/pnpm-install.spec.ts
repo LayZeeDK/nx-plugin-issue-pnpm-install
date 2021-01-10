@@ -3,9 +3,18 @@ import {
   ensureNxProject,
   readJson,
   runNxCommandAsync,
+  runPackageManagerInstall,
   uniq,
 } from '@nrwl/nx-plugin/testing';
+
 describe('pnpm-install e2e', () => {
+  it('can run pnpm install', (done) => {
+    const pnpmInstallOutput = runPackageManagerInstall();
+
+    expect(pnpmInstallOutput).toBe('');
+    done();
+  });
+
   it('should create pnpm-install', async (done) => {
     const plugin = uniq('pnpm-install');
     ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
