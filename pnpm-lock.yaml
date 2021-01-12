@@ -14,7 +14,6 @@ devDependencies:
   eslint: 7.10.0
   eslint-config-prettier: 6.0.0_eslint@7.10.0
   jest: 26.2.2_ts-node@9.1.1
-  pnpm: 5.15.0
   prettier: 2.1.2
   ts-jest: 26.4.0_jest@26.2.2+typescript@4.0.5
   ts-node: 9.1.1_typescript@4.0.5
@@ -6156,13 +6155,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
-  /pnpm/5.15.0:
-    dev: true
-    engines:
-      node: '>=10.16'
-    hasBin: true
-    resolution:
-      integrity: sha512-c9erF7MX4ZQFfoqG6V5zHY6B49har85JJ8xH1DtA0dXQvWzRzZbk+GvRrw88lL+QGy/rDYoIpuOGTqmTdirsWA==
   /portfinder/1.0.28:
     dependencies:
       async: 2.6.3
@@ -8395,7 +8387,6 @@ specifiers:
   eslint: 7.10.0
   eslint-config-prettier: 6.0.0
   jest: 26.2.2
-  pnpm: ^5.15.0
   prettier: 2.1.2
   ts-jest: 26.4.0
   ts-node: ~9.1.1
