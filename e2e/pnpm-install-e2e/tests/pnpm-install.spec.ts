@@ -9,21 +9,9 @@ import {
 } from '@nrwl/nx-plugin/testing';
 
 describe('pnpm-install e2e', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
     updateFile('.npmrc', 'prefer-frozen-lockfile=false');
-    updateFile('workspace.json', (raw) => {
-      const workspaceJson = JSON.parse(raw);
-      const workspaceJsonUsingPnpm = {
-        ...workspaceJson,
-        cli: {
-          ...workspaceJson.cli,
-          packageManager: 'pnpm',
-        },
-      };
-
-      return JSON.stringify(workspaceJsonUsingPnpm, null, 2);
-    });
   });
 
   it('can run pnpm install', (done) => {
