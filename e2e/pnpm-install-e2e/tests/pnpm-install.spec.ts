@@ -11,6 +11,7 @@ import {
 describe('pnpm-install e2e', () => {
   beforeEach(() => {
     ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
+    updateFile('.npmrc', 'prefer-frozen-lockfile=false');
     updateFile('workspace.json', (raw) => {
       const workspaceJson = JSON.parse(raw);
       const workspaceJsonUsingPnpm = {
