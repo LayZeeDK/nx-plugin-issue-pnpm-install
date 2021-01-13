@@ -9,7 +9,7 @@ import {
 } from '@nrwl/nx-plugin/testing';
 
 describe('pnpm-install e2e', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     ensureNxProject('@nx-plugin/pnpm-install', 'dist/packages/pnpm-install');
     updateFile('.npmrc', 'prefer-frozen-lockfile=false');
   });
